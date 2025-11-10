@@ -11,18 +11,33 @@ gsap.registerPlugin(ScrollTrigger)
 const features = [
   {
     icon: Microscope,
-    title: "Mikroskopik Hassasiyet",
-    description: "Lüleburgaz'da tek. Alman Carl Zeiss mikroskobu ile 25 kat büyütmeli tedavi. Minimal invaziv, maksimum koruma.",
+    title: "Mikro Cerrahi Hassasiyeti",
+    description: "Lüleburgaz’daki tek 25x büyütmeli Alman Carl Zeiss mikroskobu ile çalışıyoruz. Gözle görülemeyen en ince detayları yakalıyor, tedavinizdeki hata payını ortadan kaldırıyoruz.",
   },
   {
     icon: Cuboid,
-    title: "Dijital Planlama",
-    description: "3D görüntüleme ve dijital tasarım yazılımları. Tedavinizi görmeden başlamıyoruz.",
+    title: "Dijital Gülüş Tasarımı",
+    description: "Sonuç sürpriz olmamalı. Tedavinize başlamadan önce gülüşünüzü dijital ortamda 3D olarak tasarlıyor ve sonucu size önceden gösteriyoruz. Öngörülebilir, planlı ve size özel.",
   },
   {
     icon: Award,
-    title: "Akademik Uzmanlık",
-    description: "TDB üyesi. Sürekli eğitim, uluslararası kongre katılımları. Bilim temelli diş hekimliği.",
+    title: "Minimal İnvaziv Yaklaşım",
+    description: "Modern diş hekimliğinin zirvesi, dişe en az dokunmaktır. Mikro teknoloji sayesinde sadece gerekli alana müdahale ediyor, sağlam diş dokunuzu maksimum seviyede koruyoruz.",
+  },
+  {
+    icon: Award,
+    title: "Kanıta Dayalı Tedavi",
+    description: "Size 'moda' olanı değil, bilimsel olarak başarısı kanıtlanmış en güncel tedavileri sunuyoruz. Uluslararası literatürü takip ediyor, sadece doğruluğuna inandığımız yöntemleri uyguluyoruz.",
+  },
+  {
+    icon: Award,
+    title: "Biyouyumlu Malzemeler",
+    description: "Estetik kadar sağlığınız da önceliğimiz. Tedavilerimizde sadece uzun ömürlü değil, aynı zamanda vücut dokularınızla tam uyumlu (biyouyumlu), alerjen içermeyen güvenli materyaller kullanıyoruz.",
+  },
+  {
+    icon: Award,
+    title: "Hasta Odaklı İletişim",
+    description: "Tedavi koltuğunda şeffaflık esastır. Sizi dinliyor, tüm süreci ve seçenekleri net bir şekilde anlatıyor, aklınızda tek bir soru işareti kalmadan tedaviye başlıyoruz.",
   },
 ]
 
@@ -85,10 +100,10 @@ export function WhyChooseUs() {
             ref={titleRef}
             className="text-3xl font-bold tracking-tight text-brown sm:text-4xl"
           >
-            Neden Dt. Emrecan Eren?
+            Neden Emrecan Eren <br />Ağız ve Diş Sağlığı Polikliniği?
           </h2>
           <p className="mt-4 text-lg text-brown/70">
-            Modern teknoloji ve uzman yaklaşımla fark yaratan diş hekimliği
+            Modern teknoloji ve uzman yaklaşımla fark yaratan Diş Polikliniği
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
