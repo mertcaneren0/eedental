@@ -1,6 +1,27 @@
+# Node & Next.js
 node_modules/
-.env
 .next/
 dist/
 build/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Logs
 *.log
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+
+# Temporary / cache
+*.tmp
+*.swp
+
+# Misc
+content.md
+project_summary.md
+
+

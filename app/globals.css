@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 25% 91%; /* #f0ece1 cream */
+    --foreground: 20 20% 35%; /* #725649 brown */
+
+    --card: 36 25% 91%;
+    --card-foreground: 20 20% 35%;
+
+    --popover: 36 25% 91%;
+    --popover-foreground: 20 20% 35%;
+
+    --primary: 25 22% 44%; /* #886e57 vizon */
+    --primary-foreground: 36 25% 91%;
+
+    --secondary: 60 3% 71%; /* #b6b7b1 grey */
+    --secondary-foreground: 20 20% 35%;
+
+    --muted: 60 3% 71%;
+    --muted-foreground: 20 20% 45%;
+
+    --accent: 25 22% 44%;
+    --accent-foreground: 36 25% 91%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 36 25% 91%;
+
+    --border: 60 3% 71%;
+    --input: 60 3% 71%;
+    --ring: 25 22% 44%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-cream text-brown;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0ece1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #886e57;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #725649;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
