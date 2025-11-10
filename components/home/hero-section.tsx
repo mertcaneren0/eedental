@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 import { gsap } from "gsap"
 import { TextPlugin } from "gsap/TextPlugin"
 import { Button } from "@/components/ui/button"
@@ -13,7 +14,7 @@ export function HeroSection() {
 
   useEffect(() => {
     if (titleRef.current) {
-      const text = "Geleceğin Diş Hekimliği,\nBugünün Kliniği."
+      const text = "Mükemmellik, Detaylarda Gizlidir"
       
       gsap.fromTo(
         titleRef.current,
@@ -36,25 +37,31 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-cream via-cream to-vizon/10">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23725649' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/bg.png"
+          alt="Dental clinic background"
+          fill
+          priority
+          className="object-cover"
+          quality={100}
+        />
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/95 via-cream/90 to-vizon/80" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <div className="mx-auto max-w-3xl">
           <h1
             ref={titleRef}
-            className="text-5xl font-bold tracking-tight text-brown sm:text-7xl whitespace-pre-line min-h-[200px]"
+            className="font-space-grotesk text-5xl font-bold tracking-tight text-brown sm:text-7xl whitespace-pre-line min-h-[200px]"
           >
             {/* Text will be animated by GSAP */}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-brown/80 max-w-2xl mx-auto">
-            Lüleburgaz'ın ilk ve tek mikroskop destekli diş kliniği. 
-            Teknoloji ve insan odaklı yaklaşımımızla gülüşünüzü yeniden tasarlıyoruz.
+          <p className="mt-0 text-lg leading-8 text-brown/80 max-w-2xl mx-auto">
+            Gülüşünüzdeki estetik ve sağlığın, en ince detaylardan başladığına inanıyoruz. Lüleburgaz'daki kliniğimizde, teknoloji ve insan odaklı yaklaşımımızla gülüşünüzü yeniden tasarlıyoruz.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button size="lg" onClick={scrollToContact}>

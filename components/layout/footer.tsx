@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react"
 
 const quickLinks = [
   { name: "Hakkımızda", href: "/hakkinda" },
+  { name: "Ekibimiz", href: "/ekibimiz" },
   { name: "Tedaviler", href: "/tedaviler" },
   { name: "Blog", href: "/dis-sagligi-rehberi" },
   { name: "İletişim", href: "/iletisim" },

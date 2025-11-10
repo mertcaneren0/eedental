@@ -1,13 +1,18 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
+gsap.registerPlugin(ScrollTrigger)
+
 export function ContactForm() {
+  const formRef = useRef<HTMLDivElement>(null)
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -40,10 +45,31 @@ export function ContactForm() {
     }
   }
 
+  useEffect(() => {
+    if (!formRef.current) return
+
+    gsap.fromTo(
+      formRef.current,
+      { opacity: 0, y: 60, scale: 0.95 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    )
+  }, [])
+
   return (
-    <section id="contact" className="py-24 bg-cream">
+    <section id="contact" className="py-24 bg-cream overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-2xl" ref={formRef}>
           <Card>
             <CardHeader className="text-center">
               <CardTitle className="text-3xl">Gülüşünüzü Yeniden Keşfedin</CardTitle>
