@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font smoothing for better rendering */
+@layer base {
+  body {
+    @apply antialiased;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
 @layer base {
   :root {
     --background: 36 25% 91%; /* #f0ece1 cream */

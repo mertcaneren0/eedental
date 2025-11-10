@@ -20,7 +20,49 @@ Strapi admin panel: `http://localhost:1337/admin`
 
 ## 📋 Content Types Configuration
 
-### 1. Blog Posts
+### 1. Team Members (Ekip Üyeleri)
+
+**Collection Type Name:** `team-member`
+
+#### Fields:
+
+| Field Name | Type | Options |
+|------------|------|---------|
+| name | Text | Required, Max: 100 |
+| title | Text | Required, Max: 100 (e.g., "Diş Hekimi", "Diş Hekimi Asistanı") |
+| bio | Text | Required, Max: 500 |
+| photo | Media (Single) | Required, Images only |
+| email | Email | Optional |
+| linkedin | Text | Optional (LinkedIn profile URL) |
+| order | Number | Required, Default: 0 (for sorting) |
+| isActive | Boolean | Required, Default: true |
+
+#### Settings:
+- ❌ Disable Draft & Publish
+- API ID: `team-members`
+
+#### Permissions (Public):
+- `find` ✅
+- `findOne` ✅
+- `count` ✅
+
+#### Example Data:
+
+```json
+{
+  "name": "Dt. Emrecan Eren",
+  "title": "Diş Hekimi - Klinik Sahibi",
+  "bio": "Mikroskopik diş tedavisi ve estetik diş hekimliği uzmanı. TDB üyesi. 10+ yıl deneyim.",
+  "email": "emrecan@emrecaneren.com",
+  "linkedin": "https://linkedin.com/in/emrecaneren",
+  "order": 1,
+  "isActive": true
+}
+```
+
+---
+
+### 2. Blog Posts
 
 **Collection Type Name:** `blog-post`
 
@@ -50,7 +92,7 @@ Strapi admin panel: `http://localhost:1337/admin`
 
 ---
 
-### 2. Appointment Requests
+### 3. Appointment Requests
 
 **Collection Type Name:** `appointment-request`
 
@@ -97,7 +139,7 @@ module.exports = {
 
 ---
 
-### 3. Job Applications
+### 4. Job Applications
 
 **Collection Type Name:** `job-application`
 
@@ -220,6 +262,16 @@ SENDGRID_API_KEY=your_sendgrid_api_key
 ---
 
 ## 🔄 API Endpoints
+
+### Team Members
+
+```bash
+# Get all active team members (sorted by order)
+GET /api/team-members?populate=photo&filters[isActive][$eq]=true&sort=order:asc
+
+# Get single team member
+GET /api/team-members/:id?populate=photo
+```
 
 ### Blog Posts
 

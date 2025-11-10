@@ -29,8 +29,9 @@ ee_web/
 ├── app/                          # Next.js App Router
 │   ├── page.tsx                  # Anasayfa
 │   ├── hakkinda/page.tsx         # Hakkımızda
+│   ├── ekibimiz/page.tsx         # Ekibimiz (Strapi CMS)
 │   ├── iletisim/page.tsx         # İletişim
-│   ├── kariyer/page.tsx          # Kariyer (TODO)
+│   ├── kariyer/page.tsx          # Kariyer
 │   ├── tedaviler/                # Tedavi sayfaları
 │   │   ├── page.tsx              # Tedaviler ana sayfa
 │   │   └── implant-tedavisi/     # Örnek tedavi detay
@@ -38,7 +39,8 @@ ee_web/
 ├── components/
 │   ├── ui/                       # Shadcn/ui components
 │   ├── layout/                   # Header, Footer
-│   ├── home/                     # Anasayfa sections
+│   ├── home/                     # Anasayfa sections (GSAP animations)
+│   ├── team/                     # Ekip üyeleri component
 │   ├── treatment/                # Tedavi sayfası components
 │   └── seo/                      # JSON-LD schemas
 ├── lib/
@@ -99,27 +101,50 @@ npm start
 - **Duration**: 2 saniye
 - **Delay**: 0.5 saniye
 
+### Why Choose Us Section
+- **Title Animation**: Fade-in from bottom
+- **Cards Animation**: Stagger animation with scale + bounce effect
+- **Ease**: "back.out(1.2)" for smooth bounce
+
 ### Services Section
 - **ScrollTrigger**: Her kart scroll'da fade-in + slide-up
 - **Stagger**: 0.1 saniye gecikme
 - **Trigger**: "top bottom-=100"
 
-## 📝 TODO: Strapi Backend
+### Contact Form Section
+- **Scale + Fade**: Form kartı scale-up ve fade-in
+- **Duration**: 1 saniye
+- **Ease**: "power3.out"
 
-### Content Types:
-1. **blog_posts**
+### Reusable Components
+- **AnimatedSection**: 6 farklı animasyon tipi (fade-up, slide-left, scale-up, vb.)
+- **ParallaxSection**: Parallax scroll efekti
+
+## 📝 Strapi Backend Content Types
+
+### 1. team_members ✅
+   - name, title, bio
+   - photo (Media)
+   - email, linkedin
+   - order (sorting), isActive (boolean)
+   - **Status**: Implemented, ready for use
+
+### 2. blog_posts ⏳
    - title, slug, excerpt, content (Rich Text)
    - featured_image (Media)
    - category, published_at
+   - **Status**: TODO
 
-2. **appointment_requests**
+### 3. appointment_requests ⏳
    - name, phone, message
    - created_at
+   - **Status**: TODO (form ready, API integration needed)
 
-3. **job_applications**
+### 4. job_applications ⏳
    - name, email, phone, position
    - cv (Media)
    - created_at
+   - **Status**: TODO (form ready, API integration needed)
 
 ### API Endpoints:
 - `POST /api/appointment-requests` - Randevu formu
