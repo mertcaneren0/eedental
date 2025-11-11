@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -18,44 +19,56 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-grey/30 bg-cream/95 backdrop-blur supports-[backdrop-filter]:bg-cream/80">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <header className="sticky top-0 z-50 w-full bg-brown backdrop-blur-md border-b border-cream/10">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="text-2xl font-bold text-brown">Dt. Emrecan Eren</span>
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <div className="w-[180px] h-[40px] flex items-center justify-center">
+              <Image 
+                src="/images/ee_logo.png" 
+                alt="Dt. Emrecan Eren" 
+                width={180} 
+                height={40}
+                className="object-contain brightness-0 invert"
+              />
+            </div>
           </Link>
         </div>
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-brown"
+            className="p-2 text-cream hover:text-cream/80 transition-colors"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Menüyü aç</span>
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-8">
+        <div className="hidden lg:flex lg:gap-x-2 lg:items-center">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-brown hover:text-vizon transition-colors"
+              className="px-5 py-2.5 text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 rounded-full transition-all whitespace-nowrap"
             >
               {item.name}
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
-          <Button variant="outline" size="sm" asChild>
-            <Link href="tel:+90">
-              <Phone className="mr-2 h-4 w-4" />
-              Ara
-            </Link>
-          </Button>
-          <Button size="sm" asChild>
-            <Link href="/iletisim">Randevu Al</Link>
-          </Button>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-3">
+          <Link 
+            href="tel:+905434860055"
+            className="px-5 py-2.5 text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 rounded-full transition-all inline-flex items-center whitespace-nowrap"
+          >
+            <Phone className="mr-2 h-4 w-4" />
+            Ara
+          </Link>
+          <Link 
+            href="/iletisim"
+            className="px-6 py-2.5 text-sm font-semibold text-brown bg-cream hover:bg-cream/90 rounded-full transition-all whitespace-nowrap shadow-md hover:shadow-lg"
+          >
+            Randevu Al
+          </Link>
         </div>
       </nav>
       {/* Mobile menu */}

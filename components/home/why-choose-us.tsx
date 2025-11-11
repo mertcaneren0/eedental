@@ -44,17 +44,49 @@ const features = [
 export function WhyChooseUs() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
   const titleRef = useRef<HTMLHeadingElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    // Animate title
-    if (titleRef.current) {
+    // Dramatik section giriş animasyonu
+    if (sectionRef.current) {
       gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 30 },
+        sectionRef.current,
+        {
+          opacity: 0,
+          y: 100,
+          scale: 0.9,
+        },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          scale: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+            toggleActions: "play none none none",
+          },
+        }
+      )
+    }
+
+    // Animate title - daha dramatik
+    if (titleRef.current) {
+      gsap.fromTo(
+        titleRef.current,
+        { 
+          opacity: 0, 
+          y: 50,
+          scale: 0.8,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1,
+          delay: 0.3,
+          ease: "back.out(1.5)",
           scrollTrigger: {
             trigger: titleRef.current,
             start: "top 80%",
@@ -93,7 +125,7 @@ export function WhyChooseUs() {
   }, [])
 
   return (
-    <section className="py-24 bg-cream overflow-hidden">
+    <section ref={sectionRef} className="py-24 bg-cream overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2

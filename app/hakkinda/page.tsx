@@ -1,7 +1,5 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import { Building2, Microscope, Cpu, Users, Award, Briefcase, GraduationCap, TrendingUp } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 

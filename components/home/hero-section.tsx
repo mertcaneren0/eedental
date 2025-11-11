@@ -4,18 +4,21 @@ import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { gsap } from "gsap"
 import { TextPlugin } from "gsap/TextPlugin"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
-gsap.registerPlugin(TextPlugin)
+gsap.registerPlugin(TextPlugin, ScrollTrigger)
 
 export function HeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (titleRef.current) {
       const text = "Mükemmellik, Detaylarda Gizlidir"
       
+      // Yazma animasyonu
       gsap.fromTo(
         titleRef.current,
         { text: "" },
@@ -27,6 +30,20 @@ export function HeroSection() {
         }
       )
     }
+
+    // Scroll yapınca hero section'ı fade out yap
+    if (sectionRef.current) {
+      gsap.to(sectionRef.current, {
+        opacity: 0,
+        scale: 0.95,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        }
+      })
+    }
   }, [])
 
   const scrollToContact = () => {
@@ -37,7 +54,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -60,7 +77,7 @@ export function HeroSection() {
           >
             {/* Text will be animated by GSAP */}
           </h1>
-          <p className="mt-0 text-lg leading-8 text-brown/80 max-w-2xl mx-auto">
+          <p className="mt-0 text-bold leading-8 text-brown/80 max-w-2xl mx-auto">
             Gülüşünüzdeki estetik ve sağlığın, en ince detaylardan başladığına inanıyoruz. Lüleburgaz'daki kliniğimizde, teknoloji ve insan odaklı yaklaşımımızla gülüşünüzü yeniden tasarlıyoruz.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">

@@ -150,7 +150,7 @@ export function ServicesPreview() {
         </div>
         <div className="mt-12 text-center">
           <Button size="lg" variant="outline" asChild>
-            <Link href="/tedaviler">
+            <Link href="/tedaviler" className="inline-flex items-center">
               Tüm Tedavileri Görüntüle
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>

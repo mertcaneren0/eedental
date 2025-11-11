@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { ScrollAnimationsWrapper } from "@/components/layout/scroll-animations-wrapper"
 
 export const metadata: Metadata = {
   title: "Lüleburgaz Diş Hekimi | Dt. Emrecan Eren - Geleceğin Diş Hekimliği",
@@ -31,9 +32,11 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased">
-        <Header />
-        {children}
-        <Footer />
+        <ScrollAnimationsWrapper>
+          <Header />
+          {children}
+          <Footer />
+        </ScrollAnimationsWrapper>
       </body>
     </html>
   )
