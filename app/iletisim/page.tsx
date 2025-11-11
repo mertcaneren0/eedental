@@ -40,9 +40,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-brown mb-1">Adres</h3>
                     <p className="text-brown/70">
-                      [Tam Adres Bilgisi]<br />
-                      Lüleburgaz, Kırklareli<br />
-                      [Posta Kodu]
+                      8 Kasım Mahallesi, Hazal Sokak, No:44/A<br />
+                      Lüleburgaz, Kırklareli
                     </p>
                   </div>
                 </div>
@@ -55,8 +54,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-brown mb-1">Telefon</h3>
-                    <a href="tel:+90" className="text-vizon hover:underline">
-                      +90 [Telefon Numarası]
+                    <a href="tel:+905434860055" className="text-vizon hover:underline">
+                      +90 543 486 00 55
                     </a>
                   </div>
                 </div>
@@ -83,10 +82,14 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-brown mb-1">Çalışma Saatleri</h3>
-                    <div className="text-brown/70 space-y-1">
-                      <p>Pazartesi - Cuma: 09:00 - 18:00</p>
-                      <p>Cumartesi: 09:00 - 14:00</p>
-                      <p>Pazar: Kapalı</p>
+                    <div className="text-brown/70 space-y-1 text-sm">
+                      <p className="flex justify-between gap-4"><span>Pazartesi:</span> <span>13:00 - 22:00</span></p>
+                      <p className="flex justify-between gap-4"><span>Salı:</span> <span>10:30 - 19:00</span></p>
+                      <p className="flex justify-between gap-4"><span>Çarşamba:</span> <span>13:00 - 22:00</span></p>
+                      <p className="flex justify-between gap-4"><span>Perşembe:</span> <span>10:30 - 19:00</span></p>
+                      <p className="flex justify-between gap-4"><span>Cuma:</span> <span>10:30 - 19:00</span></p>
+                      <p className="flex justify-between gap-4"><span>Cumartesi:</span> <span>11:00 - 17:00</span></p>
+                      <p className="flex justify-between gap-4"><span>Pazar:</span> <span>11:00 - 17:00</span></p>
                     </div>
                   </div>
                 </div>
@@ -95,12 +98,18 @@ export default function ContactPage() {
 
             {/* Google Maps */}
             <div>
-              <h2 className="text-2xl font-bold text-brown mb-8">Konum</h2>
-              <div className="aspect-video rounded-lg bg-grey/20 flex items-center justify-center border border-grey/30">
-                <p className="text-brown/50 text-center px-8">
-                  [Google Maps Embed]<br />
-                  Klinik konumu burada gösterilecek
-                </p>
+              <h2 className="text-2xl font-bold text-brown mb-8">Konumumuz</h2>
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.2590808254245!2d27.359614499999996!3d41.390179599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b4a5f024a85985%3A0xf6409010502eb53d!2zRW1yZWNhbiBFcmVuIEHEn8SxeiB2ZSBEacWfIFNhxJ9sxLHEn8SxIFBvbGlrbGluacSfaQ!5e0!3m2!1str!2suk!4v1762827729240!5m2!1str!2suk" 
+                  width="100%" 
+                  height="400" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full"
+                />
               </div>
             </div>
           </div>

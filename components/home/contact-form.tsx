@@ -59,7 +59,7 @@ export function ContactForm() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: formRef.current,
-          start: "top 80%",
+          start: "top 50%",
           toggleActions: "play none none none",
         },
       }
@@ -67,7 +67,7 @@ export function ContactForm() {
   }, [])
 
   return (
-    <section id="contact" className="py-24 bg-cream overflow-hidden">
+    <section id="contact" className="py-16 bg-cream overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl" ref={formRef}>
           <Card>
@@ -126,7 +126,7 @@ export function ContactForm() {
                 )}
               </form>
               <p className="mt-6 text-center text-sm text-brown/60">
-                Formunuzu aldıktan sonra en kısa sürede sizi arayacağız. 
+                Formunuzu aldıktan sonra en kısa sürede sizi arayacağız. <br />
                 Acil durumlar için lütfen telefon ile iletişime geçin.
               </p>
             </CardContent>
