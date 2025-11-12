@@ -12,6 +12,7 @@ const navigation = [
   { name: "Ekibimiz", href: "/ekibimiz" },
   { name: "Tedaviler", href: "/tedaviler" },
   { name: "Blog", href: "/dis-sagligi-rehberi" },
+  { name: "Kariyer", href: "/kariyer" },
   { name: "İletişim", href: "/iletisim" },
 ]
 

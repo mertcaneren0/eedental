@@ -47,13 +47,29 @@ export default function CareerPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus("idle")
     
     try {
-      // TODO: Strapi API integration with file upload
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const response = await fetch('/api/career', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          position: formData.position,
+          // CV upload will be added later
+        }),
+      })
       
-      setSubmitStatus("success")
-      setFormData({ name: "", email: "", phone: "", position: "", cv: null })
+      const data = await response.json()
+      
+      if (data.success) {
+        setSubmitStatus("success")
+        setFormData({ name: "", email: "", phone: "", position: "", cv: null })
+      } else {
+        setSubmitStatus("error")
+      }
     } catch (error) {
       setSubmitStatus("error")
     } finally {
@@ -99,20 +115,7 @@ export default function CareerPage() {
         </div>
       </section>
 
-      {/* Open Positions */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-brown mb-8">Açık Pozisyonlar</h2>
-          <ul className="space-y-3">
-            {positions.slice(0, -1).map((position) => (
-              <li key={position} className="flex items-center gap-3 text-brown/80">
-                <div className="h-2 w-2 rounded-full bg-vizon" />
-                {position}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      
 
       {/* Application Form */}
       <section className="py-16">

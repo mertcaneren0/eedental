@@ -15,7 +15,7 @@ const quickLinks = [
 export function Footer() {
   return (
     <footer className="bg-brown text-cream">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
           {/* Column 1: Logo & Description */}
           <div className="lg:col-span-1">
@@ -119,7 +119,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-cream/40 text-center">
+        <div className="mt-4 pt-3 border-t border-cream/40 text-center">
           <p className="text-sm text-cream/60">
             If you’ve made it this far, we should probably talk.{" "}
             <a 
