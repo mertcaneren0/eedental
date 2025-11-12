@@ -19,9 +19,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        'space-grotesk': ['"Space Grotesk"', 'sans-serif'],
-        'ibm-plex': ['"IBM Plex Sans"', 'sans-serif'],
-        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-nexa)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
+        nexa: ['var(--font-nexa)', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

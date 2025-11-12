@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { ScrollAnimationsWrapper } from "@/components/layout/scroll-animations-wrapper"
 import { SessionProvider } from "@/components/providers/session-provider"
+import { nexa } from "./fonts"
 
 export const metadata: Metadata = {
   title: "Lüleburgaz Diş Hekimi | Dt. Emrecan Eren - Geleceğin Diş Hekimliği",
@@ -26,12 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="tr">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="tr" className={nexa.variable}>
       <body className="antialiased">
         <SessionProvider>
           {children}

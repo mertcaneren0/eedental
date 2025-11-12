@@ -6,7 +6,7 @@
 @layer base {
   body {
     @apply antialiased;
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-family: var(--font-nexa), system-ui, sans-serif;
     font-size: 17px;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
@@ -15,7 +15,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-nexa), sans-serif;
     line-height: 1.3;
   }
   

@@ -2,6 +2,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, Calendar, Clock, User } from "lucide-react"
+import { Breadcrumb } from "@/components/seo/breadcrumb"
+import { SchemaMarkup } from "@/components/seo/schema-markup"
 
 interface BlogPostTemplateProps {
   title: string
@@ -14,6 +16,9 @@ interface BlogPostTemplateProps {
     href: string
   }>
   pillarPage?: string
+  slug?: string
+  datePublished?: string
+  dateModified?: string
 }
 
 export function BlogPostTemplate({
@@ -24,18 +29,39 @@ export function BlogPostTemplate({
   content,
   relatedPosts = [],
   pillarPage,
+  slug,
+  datePublished,
+  dateModified,
 }: BlogPostTemplateProps) {
+  const breadcrumbItems = [
+    { name: 'Diş Sağlığı Rehberi', href: '/dis-sagligi-rehberi' },
+    { name: title, href: `/dis-sagligi-rehberi/${slug || ''}` },
+  ]
+
   return (
     <div className="bg-cream">
-      {/* Back Button */}
+      <SchemaMarkup 
+        type="article" 
+        data={{
+          title,
+          description,
+          url: `https://www.emrecaneren.com/dis-sagligi-rehberi/${slug}`,
+          datePublished: datePublished || new Date().toISOString(),
+          dateModified: dateModified || new Date().toISOString(),
+          medicalTopic: category,
+        }}
+      />
+
+      {/* Back Button & Breadcrumb */}
       <div className="bg-white border-b border-brown/10">
         <div className="mx-auto max-w-4xl px-6 lg:px-8 py-4">
           <Link href="/dis-sagligi-rehberi">
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" className="mb-4">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Tüm Yazılar
             </Button>
           </Link>
+          <Breadcrumb items={breadcrumbItems} />
         </div>
       </div>
 

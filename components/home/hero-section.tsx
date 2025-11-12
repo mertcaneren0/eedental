@@ -91,21 +91,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-3xl mx-auto">
-          <div className="bg-white/50 backdrop-blur-sm rounded-lg p-6 border border-vizon/20">
-            <div className="text-xm font-bold text-vizon">DERİNLEMESİNE GÖRÜNTÜLEME</div>
-            <div className="mt-2 text-sm text-brown/70">Yüksek Hassasiyetli Tedavi</div>
-          </div>
-          <div className="bg-white/50 backdrop-blur-sm rounded-lg p-6 border border-vizon/20">
-            <div className="text-xm font-bold text-vizon">DİJİTAL <br />TASARIM</div>
-            <div className="mt-2 text-sm text-brown/70">Milimetrik Planlama</div>
-          </div>
-          <div className="bg-white/50 backdrop-blur-sm rounded-lg p-6 border border-vizon/20">
-            <div className="text-xm font-bold text-vizon">BÜTÜNSEL <br />YAKLAŞIM</div>
-            <div className="mt-2 text-sm text-brown/70">Estetik ve Sağlık</div>
-          </div>
-        </div>
+        
       </div>
     </section>
   )

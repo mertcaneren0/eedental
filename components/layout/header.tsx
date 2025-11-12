@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-import { Menu, X, Phone } from "lucide-react"
+import { Menu, X, Phone, Instagram, Youtube } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
@@ -14,6 +14,19 @@ const navigation = [
   { name: "Blog", href: "/dis-sagligi-rehberi" },
   { name: "Kariyer", href: "/kariyer" },
   { name: "İletişim", href: "/iletisim" },
+]
+
+const socialLinks = [
+  { 
+    name: "Instagram", 
+    href: "https://www.instagram.com/dtemrecaneren", 
+    icon: Instagram,
+  },
+  { 
+    name: "YouTube", 
+    href: "https://www.youtube.com/@lifeindentistry", 
+    icon: Youtube,
+  },
 ]
 
 export function Header() {
@@ -56,7 +69,26 @@ export function Header() {
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-3">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-3 lg:items-center">
+          {/* Social Media Icons */}
+          <div className="flex gap-x-2 mr-2">
+            {socialLinks.map((social) => {
+              const Icon = social.icon
+              return (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 text-cream/70 hover:text-cream hover:bg-cream/10 rounded-full transition-all"
+                  aria-label={social.name}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              )
+            })}
+          </div>
+          
           <Link 
             href="tel:+905434860055"
             className="px-5 py-2.5 text-sm font-medium text-cream/80 hover:text-cream hover:bg-cream/10 rounded-full transition-all inline-flex items-center whitespace-nowrap"

@@ -1,6 +1,5 @@
 "use client"
 
-import type { Metadata } from "next"
 import { useState } from "react"
 import { Microscope, GraduationCap, Users } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
