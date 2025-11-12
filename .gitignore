@@ -29,4 +29,10 @@ NEXA_FONT_UYGULANDI.md
 YENI_OZELLIKLER.md
 YENI_OZELLIKLER.md
 
+# Uploads
+/public/uploads
 /public/images
+
+# Database
+/prisma/dev.db
+/prisma/dev.db-journal

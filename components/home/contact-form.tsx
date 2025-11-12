@@ -24,20 +24,23 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus("idle")
     
     try {
-      // TODO: Strapi API integration
-      // const response = await fetch('/api/appointment-requests', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // })
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
       
-      // Simulating API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const data = await response.json()
       
-      setSubmitStatus("success")
-      setFormData({ name: "", phone: "", message: "" })
+      if (data.success) {
+        setSubmitStatus("success")
+        setFormData({ name: "", phone: "", message: "" })
+      } else {
+        setSubmitStatus("error")
+      }
     } catch (error) {
       setSubmitStatus("error")
     } finally {

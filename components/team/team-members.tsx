@@ -6,24 +6,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Linkedin, Mail } from "lucide-react"
 
 interface TeamMember {
-  id: number
-  attributes: {
-    name: string
-    title: string
-    bio: string
-    photo: {
-      data: {
-        attributes: {
-          url: string
-          alternativeText: string
-        }
-      }
-    }
-    email?: string
-    linkedin?: string
-    order: number
-    isActive: boolean
-  }
+  id: string
+  name: string
+  title: string
+  specialty: string | null
+  bio: string
+  imageUrl: string | null
+  order: number
+  isActive: boolean
 }
 
 export function TeamMembers() {
@@ -34,16 +24,9 @@ export function TeamMembers() {
   useEffect(() => {
     async function fetchTeamMembers() {
       try {
-        const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
-        const response = await fetch(
-          `${strapiUrl}/api/team-members?populate=photo&filters[isActive][$eq]=true&sort=order:asc`,
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
-            },
-            cache: 'no-store', // Always fetch fresh data
-          }
-        )
+        const response = await fetch('/api/team', {
+          cache: 'no-store',
+        })
 
         if (!response.ok) {
           throw new Error('Failed to fetch team members')
@@ -126,73 +109,71 @@ export function TeamMembers() {
   }
 
   return (
-    <section className="py-16 bg-cream">
+    <section className="py-16 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-brown text-center mb-12">
           Ekip Üyelerimiz
         </h2>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {teamMembers.map((member) => {
-            const photoUrl = member.attributes.photo?.data?.attributes?.url
-            const fullPhotoUrl = photoUrl?.startsWith('http') 
-              ? photoUrl 
-              : `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${photoUrl}`
+        
+        {/* Ekip Fotoğrafı */}
+        <div className="mb-16">
+          <div className="relative w-full rounded-xl overflow-hidden shadow-lg">
+            <Image
+              src="/images/ee_ekibiz.png"
+              alt="Ekip Fotoğrafı"
+              width={1950}
+              height={1250}
+              className="w-full h-auto"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              priority
+            />
+          </div>
+        </div>
 
-            return (
-              <Card key={member.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  {photoUrl ? (
-                    <div className="relative aspect-square rounded-lg overflow-hidden mb-4 bg-grey/20">
-                      <Image
-                        src={fullPhotoUrl}
-                        alt={member.attributes.photo.data.attributes.alternativeText || member.attributes.name}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                    </div>
-                  ) : (
-                    <div className="aspect-square rounded-lg bg-vizon/10 flex items-center justify-center mb-4">
-                      <span className="text-4xl font-bold text-vizon">
-                        {member.attributes.name.charAt(0)}
-                      </span>
-                    </div>
-                  )}
-                  <CardTitle className="text-xl">{member.attributes.name}</CardTitle>
-                  <CardDescription className="text-vizon font-medium">
-                    {member.attributes.title}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-brown/70 text-sm mb-4">
-                    {member.attributes.bio}
-                  </p>
-                  <div className="flex gap-3">
-                    {member.attributes.email && (
-                      <a
-                        href={`mailto:${member.attributes.email}`}
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-grey hover:bg-vizon/10 transition-colors"
-                        title="Email"
-                      >
-                        <Mail className="h-4 w-4 text-vizon" />
-                      </a>
-                    )}
-                    {member.attributes.linkedin && (
-                      <a
-                        href={member.attributes.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-grey hover:bg-vizon/10 transition-colors"
-                        title="LinkedIn"
-                      >
-                        <Linkedin className="h-4 w-4 text-vizon" />
-                      </a>
-                    )}
+        {/* Ekip Üyeleri - Sıralı Liste */}
+        <div className="space-y-12">
+          {teamMembers.map((member, index) => (
+            <div 
+              key={member.id} 
+              className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-start`}
+            >
+              {/* Fotoğraf */}
+              <div className="w-full md:w-1/3 flex-shrink-0">
+                {member.imageUrl && (member.imageUrl.startsWith('/') || member.imageUrl.startsWith('http')) ? (
+                  <div className="relative rounded-lg overflow-hidden shadow-md">
+                    <Image
+                      src={member.imageUrl}
+                      alt={member.name}
+                      width={1100}
+                      height={1670}
+                      className="w-full h-auto"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                   </div>
-                </CardContent>
-              </Card>
-            )
-          })}
+                ) : (
+                  <div className="aspect-[11/16.7] rounded-lg bg-vizon/10 flex items-center justify-center">
+                    <span className="text-6xl font-bold text-vizon">
+                      {member.name.charAt(0)}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Bilgiler */}
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-brown mb-2">{member.name}</h3>
+                <p className="text-lg text-vizon font-medium mb-1">{member.title}</p>
+                {member.specialty && (
+                  <p className="text-md text-vizon/80 mb-4">{member.specialty}</p>
+                )}
+                <div className="prose prose-brown max-w-none">
+                  <p className="text-brown/80 whitespace-pre-line leading-relaxed">
+                    {member.bio}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
