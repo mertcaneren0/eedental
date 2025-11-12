@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Instagram, Youtube, Facebook } from "lucide-react"
 
 const quickLinks = [
   { name: "Hakkımızda", href: "/hakkinda" },
@@ -10,6 +10,22 @@ const quickLinks = [
   { name: "Blog", href: "/dis-sagligi-rehberi" },
   { name: "İletişim", href: "/iletisim" },
   { name: "Kariyer", href: "/kariyer" },
+]
+
+const socialLinks = [
+  { 
+    name: "Instagram", 
+    href: "https://www.instagram.com/dtemrecaneren", 
+    icon: Instagram,
+    color: "hover:text-pink-400"
+  },
+  { 
+    name: "YouTube", 
+    href: "https://www.youtube.com/@lifeindentistry", 
+    icon: Youtube,
+    color: "hover:text-red-500"
+  },
+  
 ]
 
 export function Footer() {
@@ -24,6 +40,28 @@ export function Footer() {
               Lüleburgaz'ın ilk ve tek mikroskop destekli diş kliniği. 
               Geleceğin diş hekimliği, bugünün kliniği.
             </p>
+
+            {/* Social Media Links */}
+            <div className="mb-6">
+              <h4 className="text-sm font-semibold mb-3 text-cream">Bizi Takip Edin</h4>
+              <div className="flex gap-4">
+                {socialLinks.map((social) => {
+                  const Icon = social.icon
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`text-cream/70 ${social.color} transition-all duration-300 transform hover:scale-110`}
+                      aria-label={social.name}
+                    >
+                      <Icon className="h-6 w-6" />
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
             
             <ul className="space-y-3 text-cream/80">
               <li className="flex items-start gap-3">
