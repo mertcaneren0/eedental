@@ -38,10 +38,10 @@ export function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
             <div className="w-[180px] h-[40px] flex items-center justify-center">
-              <Image 
-                src="/images/ee_logo.png" 
-                alt="Dt. Emrecan Eren" 
-                width={180} 
+              <Image
+                src="/header_logos.png"
+                alt="Dt. Emrecan Eren"
+                width={180}
                 height={40}
                 className="object-contain brightness-0 invert"
               />
@@ -96,7 +96,7 @@ export function Header() {
             <Phone className="mr-2 h-4 w-4" />
             Ara
           </Link>
-          <Link 
+          <Link
             href="/iletisim"
             className="px-6 py-2.5 text-sm font-semibold text-brown bg-cream hover:bg-cream/90 rounded-full transition-all whitespace-nowrap shadow-md hover:shadow-lg"
           >

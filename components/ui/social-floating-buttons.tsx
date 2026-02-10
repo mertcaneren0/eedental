@@ -2,6 +2,7 @@
 
 import { MessageCircle, Instagram } from "lucide-react"
 import { useState, useEffect } from "react"
+import { LanguageSelectorFixed } from "@/components/language-selector-fixed"
 
 export function SocialFloatingButtons() {
   const [isVisible, setIsVisible] = useState(false)
@@ -29,6 +30,17 @@ export function SocialFloatingButtons() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+      {/* Language Selector */}
+      <div
+        className={`
+          transition-all duration-300 transform
+          ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
+        `}
+        style={{ transitionDelay: '0ms' }}
+      >
+        <LanguageSelectorFixed />
+      </div>
+
       {/* Instagram Button */}
       <button
         onClick={handleInstagramClick}
