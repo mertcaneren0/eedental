@@ -96,7 +96,7 @@ export function Header() {
             <Phone className="mr-2 h-4 w-4" />
             Ara
           </Link>
-          <Link 
+          <Link
             href="/iletisim"
             className="px-6 py-2.5 text-sm font-semibold text-brown bg-cream hover:bg-cream/90 rounded-full transition-all whitespace-nowrap shadow-md hover:shadow-lg"
           >
