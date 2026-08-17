@@ -19,6 +19,7 @@ Thumbs.db
 # Temporary / cache
 *.tmp
 *.swp
+tsconfig.tsbuildinfo
 
 # Misc
 content.md
